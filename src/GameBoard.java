@@ -1,5 +1,6 @@
 import pieces.Dwarf;
 import pieces.Elf;
+import pieces.Knight;
 import pieces.Piece;
 import tiles.*;
 
@@ -151,6 +152,32 @@ public class GameBoard extends JFrame{
             randomCol = random.nextInt(9);
             if(pieceCollection[randomRow][randomCol] == null){
                 pieceCollection[randomRow][randomCol] = (new Dwarf(randomRow, randomCol, Color.DARK_GRAY, Color.RED));
+            }else{
+                i--;
+            }
+        }
+    }
+
+    /**
+     * Метод за инициализиране на фигурите - рицари.
+     */
+    private void setKnights(){
+
+        for(int i = 0; i < 2; i++){
+            randomRow = random.nextInt(2);
+            randomCol = random.nextInt(9);
+            if(pieceCollection[randomRow][randomCol] == null){
+                pieceCollection[randomRow][randomCol] = (new Knight(randomRow, randomCol, Color.RED, Color.DARK_GRAY));
+            }else{
+                i--;
+            }
+        }
+
+        for(int i = 0; i < 2; i++){
+            randomRow = random.nextInt(2)+5;
+            randomCol = random.nextInt(9);
+            if(pieceCollection[randomRow][randomCol] == null){
+                pieceCollection[randomRow][randomCol] = (new Knight(randomRow, randomCol, Color.DARK_GRAY, Color.RED));
             }else{
                 i--;
             }

@@ -22,6 +22,7 @@ public class GameBoard extends JFrame{
         this.boardTiles = new BoardTiles[BOARD_HEIGHT][BOARD_WIDTH];
 
         this.setBoardTiles();
+        this.setPieceCollection();
 
         this.setTitle("Knights / Elfs / Dwarfs");
         this.setSize(900, 700);
@@ -54,6 +55,15 @@ public class GameBoard extends JFrame{
     }
 
     /**
+     * Метод, при извикването на който се инициализират всички фигури върху дъската.
+     */
+    private void setPieceCollection(){
+        setDwarfs();
+        setElfs();
+        setKnights();
+    }
+
+    /**
      * Метод за инициализиране на полетата на PlayerA върху дъската.
      */
     private void setPlayerAField(){
@@ -82,7 +92,6 @@ public class GameBoard extends JFrame{
      */
     private void setObstacles(){
 
-        Random random = new Random();
         int randomObstacles = random.nextInt(5);
 
         for(int row = 0; row <= randomObstacles; row++){

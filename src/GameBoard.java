@@ -1,3 +1,4 @@
+import pieces.Dwarf;
 import pieces.Elf;
 import pieces.Piece;
 import tiles.*;
@@ -124,6 +125,32 @@ public class GameBoard extends JFrame{
             randomCol = random.nextInt(9);
             if(pieceCollection[randomRow][randomCol] == null){
                 pieceCollection[randomRow][randomCol] = (new Elf(randomRow, randomCol, Color.DARK_GRAY, Color.RED));
+            }else{
+                i--;
+            }
+        }
+    }
+
+    /**
+     * Метод за инициализиране на фигурите - джуджета.
+     */
+    private void setDwarfs(){
+
+        for(int i = 0; i < 2; i++){
+            randomRow = random.nextInt(2);
+            randomCol = random.nextInt(9);
+            if(pieceCollection[randomRow][randomCol] == null){
+                pieceCollection[randomRow][randomCol] = (new Dwarf(randomRow, randomCol, Color.RED, Color.DARK_GRAY));
+            }else{
+                i--;
+            }
+        }
+
+        for(int i = 0; i < 2; i++){
+            randomRow = random.nextInt(2)+5;
+            randomCol = random.nextInt(9);
+            if(pieceCollection[randomRow][randomCol] == null){
+                pieceCollection[randomRow][randomCol] = (new Dwarf(randomRow, randomCol, Color.DARK_GRAY, Color.RED));
             }else{
                 i--;
             }

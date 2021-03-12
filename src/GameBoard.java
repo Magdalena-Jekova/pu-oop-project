@@ -20,6 +20,7 @@ public class GameBoard extends JFrame{
 
     public GameBoard() {
         this.boardTiles = new BoardTiles[BOARD_HEIGHT][BOARD_WIDTH];
+        this.pieceCollection = new Piece[BOARD_HEIGHT][BOARD_WIDTH];
 
         this.setBoardTiles();
         this.setPieceCollection();
@@ -40,6 +41,11 @@ public class GameBoard extends JFrame{
             for(int col = 0; col < 9; col++){
                 BoardTiles tile = boardTiles[row][col];
                 tile.render(g);
+
+                if(this.pieceCollection[row][col] != null){
+                    Piece piece = pieceCollection[row][col];
+                    piece.render(g);
+                }
             }
         }
     }

@@ -1,3 +1,5 @@
+import pieces.Elf;
+import pieces.Piece;
 import tiles.*;
 
 import javax.swing.*;
@@ -9,6 +11,10 @@ public class GameBoard extends JFrame{
     public static final int BOARD_WIDTH  = 9;
     public static final int BOARD_HEIGHT = 7;
     private BoardTiles[][] boardTiles;
+    private Piece[][] pieceCollection;
+    Random random = new Random();
+    private int randomRow;
+    private int randomCol;
 
     public GameBoard() {
         this.boardTiles = new BoardTiles[BOARD_HEIGHT][BOARD_WIDTH];
@@ -94,6 +100,32 @@ public class GameBoard extends JFrame{
         for(int row = 5; row < 7; row++){
             for(int col = 0; col < 9; col++){
                 this.boardTiles[row][col] = new PlayerBCastle(row, col);
+            }
+        }
+    }
+
+    /**
+     * Метод за инициализиране на фигурите - елфи.
+     */
+    private void setElfs(){
+
+        for(int i = 0; i < 2; i++){
+            randomRow = random.nextInt(2);
+            randomCol = random.nextInt(9);
+            if(pieceCollection[randomRow][randomCol] == null){
+                pieceCollection[randomRow][randomCol] = (new Elf(randomRow, randomCol, Color.RED, Color.DARK_GRAY));
+            }else{
+                i--;
+            }
+        }
+
+        for(int i = 0; i < 2; i++){
+            randomRow = random.nextInt(2)+5;
+            randomCol = random.nextInt(9);
+            if(pieceCollection[randomRow][randomCol] == null){
+                pieceCollection[randomRow][randomCol] = (new Elf(randomRow, randomCol, Color.DARK_GRAY, Color.RED));
+            }else{
+                i--;
             }
         }
     }
